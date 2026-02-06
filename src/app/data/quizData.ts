@@ -415,6 +415,31 @@ export const quizDataByCategory: Record<string, Question[]> = {
       explanation: "Prolonger la durée de vie de ses objets c'est toujours le meilleur choix ! Partager et mutualiser nos équipements aussi, cela permet de réduire la consommation de nouvelles ressources, de faire des économies en utilisant juste ce dont on a besoin !\nVous pouvez trouver où faire réparer votre imprimante sur ce lien [ici](https://quefairedemesdechets.ademe.fr/dechet/imprimante/?utm_campaign=circularoulette_enligne)  et même voir quels réparateurs vous permettent de bénéficier du bonus réparation !",
       source: "Numérique"
     }
-  ]
+  ],
 
+  "on en parle !?": [
+    {
+      id: 999,
+      question: "Cette section est en cours de construction",
+      options: [
+        "Revenez bientôt pour découvrir de nouvelles questions !"
+      ],
+      correctAnswer: 0,
+      explanation: "Les contenus de cette catégorie sont en cours de préparation. Restez connectés !",
+      source: "ADEME"
+    }
+  ],
+
+  "en train !!!": [
+    {
+      id: 998,
+      question: "Cette section est en cours de construction",
+      options: [
+        "Revenez bientôt pour découvrir de nouvelles questions !"
+      ],
+      correctAnswer: 0,
+      explanation: "Les contenus de cette catégorie sont en cours de préparation. Restez connectés !",
+      source: "ADEME"
+    }
+  ]
 };
