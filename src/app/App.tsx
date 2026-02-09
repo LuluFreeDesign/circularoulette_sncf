@@ -3,8 +3,14 @@ import { Wheel } from "./components/Wheel";
 import { Quiz } from "./components/Quiz";
 import { quizDataByCategory } from "./data/quizData";
 
+// Catégories actives pour le quiz (exclure "et ça repart !" et "mystère !!")
+const quizCategories = Object.keys(quizDataByCategory).filter(
+  (cat) => cat !== "et ça repart !" && cat !== "mystère !!"
+);
+
 export default function App() {
   const [currentCategory, setCurrentCategory] = useState<string | null>(null);
+  const [mysteryResolvedCategory, setMysteryResolvedCategory] = useState<string | null>(null);
   const [isSpinning, setIsSpinning] = useState(false);
 
   // Auto-resize pour iframe : envoyer la hauteur au parent
@@ -48,18 +54,23 @@ export default function App() {
       // Pas besoin de changer de vue, juste garder la roue visible
       return;
     }
-    
-    // Cas spécial : "en train !!!" sélectionne une question de cette catégorie spéciale
-    if (category === "en train !!!") {
-      setCurrentCategory(category);
+
+    // Cas spécial : "mystère !!" sélectionne une catégorie au hasard
+    if (category === "mystère !!") {
+      const randomIndex = Math.floor(Math.random() * quizCategories.length);
+      const randomCategory = quizCategories[randomIndex];
+      setMysteryResolvedCategory(randomCategory);
+      setCurrentCategory("mystère !!");
       return;
     }
-    
+
+    setMysteryResolvedCategory(null);
     setCurrentCategory(category);
   };
 
   const handleQuizComplete = () => {
     setCurrentCategory(null);
+    setMysteryResolvedCategory(null);
   };
 
   return (
@@ -73,7 +84,8 @@ export default function App() {
         />
       ) : (
         <Quiz 
-          category={currentCategory}
+          category={currentCategory === "mystère !!" ? mysteryResolvedCategory! : currentCategory}
+          isMystery={currentCategory === "mystère !!"}
           onComplete={handleQuizComplete}
         />
       )}
