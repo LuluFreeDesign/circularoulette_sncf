@@ -55,6 +55,9 @@ function isAnswerCorrect(index: number, correctAnswer: number | number[]): boole
   return getCorrectAnswers(correctAnswer).includes(index);
 }
 
+/** Mémorise la dernière question posée par catégorie pour éviter les doublons consécutifs */
+const lastQuestionByCategory: Record<string, number> = {};
+
 interface QuizProps {
   category: string;
   isMystery?: boolean;
@@ -68,8 +71,15 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
   const currentQuestion = useMemo(() => {
     const questions = quizDataByCategory[category] || [];
     if (questions.length === 0) return null;
-    const randomIndex = Math.floor(Math.random() * questions.length);
-    return questions[randomIndex];
+    const lastId = lastQuestionByCategory[category];
+    // Exclure la dernière question posée dans cette catégorie (sauf s'il n'y en a qu'une)
+    const pool = questions.length > 1
+      ? questions.filter(q => q.id !== lastId)
+      : questions;
+    const randomIndex = Math.floor(Math.random() * pool.length);
+    const selected = pool[randomIndex];
+    lastQuestionByCategory[category] = selected.id;
+    return selected;
   }, [category]);
   
   if (!currentQuestion) {
@@ -123,7 +133,7 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
             </span>
           )}
           <span className={`inline-block px-4 py-2 rounded-full ${isMystery ? "bg-[#00205b] text-white" : "bg-[#0084d4] text-white"}`}>
-            {category}
+            {category.charAt(0).toUpperCase() + category.slice(1)}
           </span>
         </div>
       </div>
@@ -134,14 +144,39 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
       </h2>
 
       {/* Indice */}
-      {currentQuestion.hint && (
-        <div className="mb-5 p-4 bg-[#a1d6ca] border-l-4 border-[#00b388] rounded-lg">
-          <p className="text-sm text-[#00205b] flex items-start gap-2">
-            <span className="text-lg shrink-0" aria-hidden="true">💡</span>
-            <span dangerouslySetInnerHTML={{ __html: currentQuestion.hint.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-[#0084d4] underline hover:text-[#003865]">$1</a>') }} />
-          </p>
-        </div>
-      )}
+      {currentQuestion.hint && (() => {
+        // Extraire l'URL depuis le hint (format markdown [texte](url) ou URL brute)
+        const markdownMatch = currentQuestion.hint.match(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/);
+        const bareUrlMatch = currentQuestion.hint.match(/(https?:\/\/[^\s)]+)/);
+        const hintUrl = markdownMatch ? markdownMatch[2] : bareUrlMatch ? bareUrlMatch[1] : null;
+
+        return (
+          <div className="mb-5 p-4 bg-[#a1d6ca] border-l-4 border-[#00b388] rounded-lg">
+            <p className="text-[#00205b] flex items-start gap-2">
+              <span className="text-lg shrink-0" aria-hidden="true">💡</span>
+              <span>
+                <strong className="text-[#00205b]">Indice</strong>
+                <br />
+                <span className="text-sm">
+                  Pour en savoir plus,{" "}
+                  {hintUrl ? (
+                    <a
+                      href={hintUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#0084d4] underline hover:text-[#003865] transition-colors"
+                    >
+                      rendez-vous par ici !
+                    </a>
+                  ) : (
+                    "rendez-vous par ici !"
+                  )}
+                </span>
+              </span>
+            </p>
+          </div>
+        );
+      })()}
 
       {/* Indication multi-réponses */}
       {isMultiAnswer && !isDiscussionQuestion && (
@@ -242,10 +277,12 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
                 <span className="text-3xl" aria-hidden="true">🎁</span>
                 <div className="flex-1">
                   <h4 className="font-bold text-lg text-[#0084d4] mb-2">
-                    Bravo ! Tentez de gagner des lots éco-responsables !
+                    Bravo ! Tentez de gagner un Aller/retour en train !
                   </h4>
                   <p className="text-[#00205b] mb-4 leading-relaxed">
-                    Vous avez bien répondu ! Participez à notre jeu concours pour gagner des produits issus de l'économie circulaire : objets réparés, upcyclés, ou de seconde main. Inscrivez-vous en 2 minutes !
+                    Une bonne réponse = une chance de gagner un voyage avec la SNCF.
+                    <br />
+                    Pour participer au tirage au sort, il suffit de nous laisser votre email 💌.
                   </p>
                   <a
                     href="https://tally.so/r/EklWLq"
