@@ -133,6 +133,16 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
         {currentQuestion.question}
       </h2>
 
+      {/* Indice */}
+      {currentQuestion.hint && (
+        <div className="mb-5 p-4 bg-[#a1d6ca] border-l-4 border-[#00b388] rounded-lg">
+          <p className="text-sm text-[#00205b] flex items-start gap-2">
+            <span className="text-lg shrink-0" aria-hidden="true">💡</span>
+            <span dangerouslySetInnerHTML={{ __html: currentQuestion.hint.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-[#0084d4] underline hover:text-[#003865]">$1</a>') }} />
+          </p>
+        </div>
+      )}
+
       {/* Indication multi-réponses */}
       {isMultiAnswer && !isDiscussionQuestion && (
         <p className="mb-5 text-sm text-[#003865] bg-[#a4c8e1]/30 border border-[#0084d4]/30 rounded-lg px-4 py-2 italic">

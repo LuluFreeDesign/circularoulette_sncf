@@ -2,8 +2,10 @@ export interface Question {
   id: number;
   question: string;
   options: string[];
-  correctAnswer: number | number[];
+  correctAnswer: number;
+  hint?: string;
   explanation: string;
+  source: string;
 }
 
 export const quizDataByCategory: Record<string, Question[]> = {
@@ -17,7 +19,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "C) Les métaux et composants seront séparés et recyclés",
       ],
       correctAnswer: 2,
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdecehts.ademe.fr/dechet/pile-jetable/?utm_campaign=circularoulette_enligne)",
       explanation: "Déposer ces objets en fin de vie dans un point de collecte, c'est leur permettre une seconde vie ! Les métaux contenus dans les piles et accumulateurs portables sont collectés, triés, broyés pour séparer les composants (acier, blackmass) et fabriquer de nouvelles piles ou divers objets de notre quotidien (couverts en acier, clefs, canettes, gouttières, etc.). \nPour trouver des points de collecte de piles autour de chez vous, c'est par ici ! [par ici](https://quefairedemesdechets.ademe.fr/dechet/pile-jetable/?utm_campaign=circularoulette_enligne) \nUne alternative : les piles rechargeables.",
+      source: "Piles"
     },
     {
       id: 2,
@@ -27,7 +31,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "B) Non",
       ],
       correctAnswer: 1,
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/categories/biodechets/dechets-alimentaires/?utm_campaign=circularoulette_enligne)",
       explanation: "Depuis 2024 toutes les communes doivent proposer un système de valorisation des biodéchets organiques. Ils doivent être triés séparemment (compost, lombricompost, bac collectif, etc) pour être valorisés afin de nourrir les sols (remplacement des engrais chimiques).\nPour trouver où déposer vos déchets alimentaires le plus proche de chez vous, cliquez juste ici et renseignez votre adresse dans la carte interactive ! [carte interactive](https://quefairedemesdechets.ademe.fr/categories/biodechets/dechets-alimentaires/?utm_campaign=circularoulette_enligne)",
+      source: "Alimentation"
     },
     {
       id: 3,
@@ -38,7 +44,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "C) Ils seront déposés en zone de réemploi",
       ],
       correctAnswer: 0,
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/dechet/vetements/?utm_campaign=circularoulette_enligne)",
       explanation: "Pour qu'ils aient une seconde vie, les vêtements doivent obligatoirement être déposés dans un des points de collecte dédié (borne dans l'espace public, en magasin, dans une association). S'ils sont déposés dans la poubelle ménagère : si le bac est refusé (lors de la collecte), il reste sur le trottoir. En revanche, s'il est emmené et mélangé au reste des emballages, il peut entrainer le refus de la benne entière. Sur la chaîne, il peut entrainer le refus d'emballages et sera envoyé à l'incinérateur.\nPour trouver où déposer vos vêtements le plus proche de chez vous, cliquez juste ici et renseignez votre adresse dans la carte interactive ! [carte interactive](https://quefairedemesdechets.ademe.fr/dechet/vetements/?utm_campaign=circularoulette_enligne)",
+      source: "Vetements"
     },
     {
       id: 4,
@@ -49,7 +57,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "C) Non, ça perturbe les chaines de tri",
       ],
       correctAnswer: 2,
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesobjets.ademe.fr/dechet/canette/?utm_campaign=circularoulette_enligne)",
       explanation: "De préférence non, mais si c'est nécessaire, les écraser dans le sens de la longueur. Au risque qu'elles ne soient pas recyclées, il est conseillé de ne pas les écraser ni les aplatir lors du tri (tout comme les bouteilles). Les canettes en acier, en aluminium, et les capsules métalliques sont récupérées séparément dans les centres de tri et regroupés en balles (paquets) en vu de leur recyclage. L'acier et l'aluminium sont ensuite lavés, broyés et fondus pour être réintégrés à la chaîne de production et fabriquer de nouveaux produits. En cas de doute, consultez la consigne sur Que faire de mes déchets ! [Que faire de mes déchets](https://quefairedemesobjets.ademe.fr/dechet/canette/?utm_campaign=circularoulette_enligne)",
+      source: "Emballages"
     },
     {
       id: 8,
@@ -60,7 +70,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "C) Je les dépose en pharmacie après avoir mis la boîte et la notice au tri",
       ],
       correctAnswer: 2,
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesobjets.ademe.fr/dechet/medicaments/?utm_campaign=circularoulette_enligne)",
       explanation: "Pour trouver la pharmacie la plus proche de chez vous pour déposer vos médicaments rendez-vous sur la page \"Médicaments\" sur  \"Que faire de mes objets\" [Que faire de mes déchets](https://quefairedemesobjets.ademe.fr/dechet/medicaments/?utm_campaign=circularoulette_enligne)",
+      source: "Médicaments"
     },
     {
       id: 13,
@@ -72,7 +84,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) Les déposer dans votre compost au jardin",
       ],
       correctAnswer: 1,
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/categories/biodechets/dechets-alimentaires/?utm_campaign=circularoulette_enligne)",
       explanation: "Les restes de repas peuvent être en très grand majorité valorisés, ce sont des biodéchets. On peut les déposer au point de collecte du quartier (ou sac dédié), ils seront envoyé vers une filière de compostage industriel. \nPour trouver où déposer vos déchets alimentaires le plus proche de chez vous, cliquez juste ici et renseignez votre adresse dans la carte interactive ! [carte interactive](https://quefairedemesdechets.ademe.fr/categories/biodechets/dechets-alimentaires/?utm_campaign=circularoulette_enligne) \nA la maison, les restes alimentaires peuvent être mis dans le composteur/lombricomposteur, à quelques exceptions près. Les os, les croûtes de fromages par exemple sont à éviter. Pas d'agrumes, ni d'épluchures d'oignons et poireau en lombricompost.",
+      source: "Alimentation"
     },
     {
       id: 14,
@@ -84,7 +98,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) Oui, ça enrichit la terre",
       ],
       correctAnswer: 2,
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/categories/biodechets/dechets-alimentaires/?utm_campaign=circularoulette_enligne)",
       explanation: "Dans la nature, les êtres vivants sont en équilibre, ils constituent un écosystème. Un écosystème, c'est l'ensemble des organismes (plantes, insectes, animaux, champignons, etc) qui interagissent entre eux au sein d'un même milieu. En cas de dépôt d'éléments extérieurs, même s'ils paraissent inoffensifs (comme des biodéchets) ils peuvent déstabiliser le fragile équilibre du milieu. La décomposition des aliments est moins rapide que nous ne pouvons l'imaginer. Les animaux ne se nourrissent pas des mêmes aliments que les êtres humains. \nPour trouver où déposer vos déchets alimentaires le plus proche de votre lieu de balade, cliquez juste ici et renseignez votre adresse dans la carte interactive ! [carte interactive](https://quefairedemesdechets.ademe.fr/categories/biodechets/dechets-alimentaires/?utm_campaign=circularoulette_enligne)",
+      source: "Alimentation"
     },
     {
       id: 7,
@@ -96,7 +112,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) Je ne les emboite pas et les laisse tels quels",
       ],
       correctAnswer: 3,
+      hint: "Rendez-vous par ici ! [par ici](nouvelle page emballages)",
       explanation: "Il n'y a pas besoin d'emboîter, ni de tasser, ni de laver. En général il faut les déposer tels quels dans le bac, mais dans certaines collectivités il faut les mettre dans un sac (jeune translucide en général).  En cas de doute sur la marche à suivre :",
+      source: "Emaballages"
     }
   ],
 
@@ -111,7 +129,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) Trouver un opticien qui permet d'acheter 4 paires pour le prix d'une",
       ],
       correctAnswer: 2,
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesobjets.ademe.fr/dechet/lunettes/?utm_campaign=circularoulette_enligne)",
       explanation: "L'option la plus écologique est de monter de nouveaux verres sur votre monture actuelle.  \nSi la monture doit vraiment être changée, il est possible de déposer sa paire de lunettes dans une borne de collecte pour lui donner une seconde vie. \nTrouvez celle la plus proche de chez vous en cliquant ici et en renseignant votre adresse sur la carte interactive ! [carte interactive](https://quefairedemesobjets.ademe.fr/dechet/lunettes/?utm_campaign=circularoulette_enligne)",
+      source: "Lunettes"
     },
     {
       id: 29,
@@ -123,7 +143,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) La déposer dans un point de collecte dédié, la donner ou la vendre",
       ],
       correctAnswer: 3,
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/dechet/attelle/?utm_campaign=circularoulette_enligne)",
       explanation: "Dans la poubelle jaune, elle ne sera jamais recyclée et finira à l'incinération.\nL'idéal est de la donner pour servir à quelqu'un d'autre. Les points de collecte spécialisés se trouvent en pharmacie ou dans les hôpitaux, retrouvez le plus proche de chez vous sur la carte interactive disponible ici [carte interactive](https://quefairedemesdechets.ademe.fr/dechet/attelle/?utm_campaign=circularoulette_enligne)",
+      source: "Aide technique"
     },
     {
       id: 30,
@@ -135,7 +157,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) La déposer en évidence sur un banc dans la rue pour que quelqu'un la prenne",
       ],
       correctAnswer: 1,
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/dechet/peluche/?utm_campaign=circularoulette_enligne)",
       explanation: "Si elle est en bon état, vous pouvez la donner ou la vendre pour qu'elle poursuive sa vie dans les bras d'autres enfants (entourage, associations, ressourceries, vente sur une plateforme de secnde main, etc)\nEn mauvais état : vous pouvez la réparer ou la déposer dans un des points de collecte pour recyclage. \nTrouvez les associations locales ou des points de collecte pour recyclage proches de chez vous en renseignant votre adresse sur cette carte interactive ! [carte interactive](https://quefairedemesdechets.ademe.fr/dechet/peluche/?utm_campaign=circularoulette_enligne)",
+      source: "Jouet"
     },
     {
       id: 32,
@@ -146,8 +170,10 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "C) Je le jette et j'en rachète un nouveau plus à la mode",
         "D) Je le dépose dans un point de collecte de vêtements et j'en recherche un d'occasion",
       ],
-      correctAnswer: [0, 1],
+      correctAnswer: 0,
+      hint: "Rendez-vous par ici !  ((lien vers [ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne) )",
       explanation: "Recoudre ou faire recoudre permettrait de prolonger la vie du manteau et d'éviter un déchet textile supplémentaire, surtout s'il est encore en bon état. Le bonus réparation pour réparer une doublure est compris entre 10€ et 25€ ! Découvrez les réparateurs agréés qui peuvent vous faire bénéficier du bonus sur cette carte interactive ((lien vers [ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne) ), ou bien simplement la retoucherie la plus proche de chez vous ici [ici](https://quefairedemesdechets.ademe.fr/dechet/vetements/?utm_campaign=circularoulette_enligne)",
+      source: "Vetement"
     },
     {
       id: 36,
@@ -159,7 +185,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) 99%",
       ],
       correctAnswer: 2,
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/les-cartes-de-france-de-l%C3%A9conomie-circulaire/seconde-main/?utm_campaign=circularoulette_enligne)",
       explanation: "Vous faites partie de cette proportion ? Pensiez-vous qu'autant de personnes achetaient d'occasion ?\nPour trouver les boutiques les plus proches de chez vous RDV sur la carte de la seconde main. [ici](https://quefairedemesdechets.ademe.fr/les-cartes-de-france-de-l%C3%A9conomie-circulaire/seconde-main/?utm_campaign=circularoulette_enligne)",
+      source: "Seconde main"
     },
     {
       id: 39,
@@ -171,19 +199,23 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) La démonter et trier les matériaux un par un",
       ],
       correctAnswer: 2,
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/categories/meubles/?utm_campaign=circularoulette_enligne)",
       explanation: "La donner à son entourage, ses voisins, à une association ou la mettre en vente. Trouvez les associations locales ou des points de collecte pour recyclage proches de chez vous en renseignant votre adresse sur cette carte interactive ! [carte interactive](https://quefairedemesdechets.ademe.fr/categories/meubles/?utm_campaign=circularoulette_enligne)",
+      source: "PGC"
     },
     {
       id: 27,
       question: "S'il est cassé, quel est le meilleur geste pour prolonger la durée de vie d'un objet ?",
       options: [
-        "A) Le jeter en le triant dans la bonne filière pour qu'il soit recyclé",
+        "A) Le jeter en le triant dans la bonne filière pour qu’il soit recyclé",
         "B) Le donner à une association",
         "C) Le revendre même s'il est cassé",
         "D) Le réparer pour en prolonger l'usage",
       ],
       correctAnswer: 3,
+      hint: "Rendez-vous par ici ! [par ici](https://www.zerowastefrance.org/hierarchie-modes-traitement-dechets-juridictions-jurisprudence-application/)",
       explanation: "Il existe une \"hiérarchie des modes de traitement des déchets\" qui nous permet de savoir quelle est la meilleur \"deuxième vie\"  pour un objet et lui éviter au maximum de passer par la case déchet ! Avant qu'il ne devienne un déchet on peut réparer l'objet soi-même, chez un réparateur agréé, ou dans un repair café. En cas de doute, le site Que faire de mes objets & déchets [Que faire de mes déchets](https://quefairedemesdechets.ademe.fr/?utm_campaign=circularoulette_enligne)  est un bon réflexe à prendre.",
+      source: "ADEME"
     },
     {
       id: 33,
@@ -191,11 +223,13 @@ export const quizDataByCategory: Record<string, Question[]> = {
       options: [
         "A) Le mettre devant chez vous avec un mot",
         "B) Le proposer à une ressourcerie ou sur un site de don",
-        "C) L'amener en déchetterie",
+        "C) L’amener en déchetterie",
         "D) Le démonter pour récupérer la mousse",
       ],
       correctAnswer: 1,
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/categories/meubles/canape/?utm_campaign=circularoulette_enligne)",
       explanation: "Le proposer à son entourage, à son voisinage, à une ressourcerie, ou sur un site de dons. Sinon vous pouvez l'emmener en déchetterie. Trouvez les solutions autour de chez vous par ici = [par ici](https://quefairedemesdechets.ademe.fr/categories/meubles/canape/?utm_campaign=circularoulette_enligne)",
+      source: "PGC"
     }
   ],
 
@@ -210,7 +244,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) Bientôt 2 500 !",
       ],
       correctAnswer: 2,
+      hint: "Rendez-vous par ici ! [par ici](https://www.repaircafe.org/fr/)",
       explanation: "350 en France et 3600 dans le monde (sans compter ceux non affiliés). Si vous aimez réparer et transmettre, vous pouvez vous aussi être accompagné pour monter un Repair'café associatif. Quand vous cherchez de spoints de réparation de petit électroménager sur le site Que faire de mes objets et déchets, les repair cafés sont systématiquement affichés ! [Que faire de mes déchets](https://quefairedemesdechets.ademe.fr/categories/petit-electromenager/?utm_campaign=circularoulette_enligne)",
+      source: "Réparation"
     },
     {
       id: 0,
@@ -222,7 +258,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) 850",
       ],
       correctAnswer: 1,
+      hint: "rendez-vous par ici ! [par ici](https://www.boites-a-livres.fr/)",
       explanation: "Il y a plus de 16 000 boites de partages de livres en France. La majorité a été installée par l'association Recyclivre, et leur projet Boite-à-Lire. [ici](https://www.boite-a-lire.com/). Pour faciliter le don de livres, Recyclivre nous a partagé leur liste qui peut se retrouver sur la page Livres de Que faire de mes objets et déchets [Que faire de mes déchets](https://quefairedemesdechets.ademe.fr/categories/livres/?utm_campaign=circularoulette_enligne) , aux côtés des ressourceries généralistes et autres librairies d'occasion. Bonnes lectures !",
+      source: "ADEME"
     },
     {
       id: 0,
@@ -234,7 +272,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) 500 litres",
       ],
       correctAnswer: 3,
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/dechet/megot-de-cigarette/?utm_campaign=circularoulette_enligne)",
       explanation: "Un mégot peut polluer jusqu'à 500 litres d'eau, et mettre jusqu'à 10 ans à se décomposer. Pour le jeter, pas besoin d'attendre une poubelle dédiée, il suffit de l'éteindre et de le mettre à la poubelle grise des ordures ménagères. Plus d'infos par ici [par ici](https://monmegotouilfaut.fr/)",
+      source: "ADEME"
     }
   ],
 
@@ -249,7 +289,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) Upcycling",
       ],
       correctAnswer: 1,
+      hint: "Rendez-vous par ici ! ( lien vers https://observatoire-reemploi-reutilisation.ademe.fr/comprendre-le-reemploi )",
       explanation: "Recyclage : récupération des matières qui composent l'objet (cela nécessite de l'énergie et de l'eau)\nRéemploi : c'est quand l'objet garde son usage et change de propriétaire\nRéparation : c'est quand l'objet est conservé par son propriétaire et réparé pour le rendre à nouveau fonctionnel \nUpcycling : une forme de recyclage ou de réutilisation qui ajoute de la valeur à l'objet et parfois le change d'usage (ex : salon de jardin en palettes) \nSi vous ne faites pas la même taille de vetements que vos amis, vous pouvez retouver les boutiques de seconde main autour de chez vous ici : [ici](https://quefairedemesobjets.ademe.fr/seconde-main/?utm_campaign=circularoulette_enligne)",
+      source: "Textile"
     },
     {
       id: 57,
@@ -261,7 +303,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) 660€",
       ],
       correctAnswer: 3,
-      explanation: "Prolonger d'un an la durée d'usage de ses équipements plutôt que de les remplacer par du neuf permettrait d'économiser 660 € par an. Pour trouver comment prolonger la vie de ses équipements, rdv sur [ici](https://quefairedemesobjets.ademe.fr/?utm_campaign=circularoulette_enligne)",
+      hint: "Rendez-vous par ici ! [par ici](https://infos.ademe.fr/magazine-mai-2022/faits-et-chiffres/equipements-domestiques-comment-prolonger-leur-duree-de-vie/)",
+      explanation: "Prolonger d’un an la durée d’usage de ses équipements plutôt que de les remplacer par du neuf permettrait d’économiser 660 € par an. Pour trouver comment prolonger la vie de ses équipements, rdv sur [ici](https://quefairedemesobjets.ademe.fr/?utm_campaign=circularoulette_enligne)",
+      source: "Numérique"
     },
     {
       id: 60,
@@ -273,7 +317,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) C'est une aide qui n'est jamais entrée en vigueur",
       ],
       correctAnswer: 2,
-      explanation: "Depuis 2023, TOUT le monde peut bénéficier du Bonus Réparation ! Il s'agit d'un montant déduit directement de votre facture (votre produit doit avoir été réparé chez un réparateur labellisé). Pour en savoir plus et découvrir chez qui vous rendre, rdv sur [ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne)",
+      hint: "Rendez-vous par ici !  lien vers https://www.bonusreparation.org/",
+      explanation: "Depuis 2023, TOUT le monde peut bénéficier du Bonus Réparation ! Il s’agit d’un montant déduit directement de votre facture (votre produit doit avoir été réparé chez un réparateur labellisé). Pour en savoir plus et découvrir chez qui vous rendre, rdv sur [ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne)",
+      source: "Réparation"
     },
     {
       id: 61,
@@ -285,7 +331,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) 18€",
       ],
       correctAnswer: 3,
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne)",
       explanation: "Le bonus réparation permet d'avoir 18€ remboursés pour un ressemelage de la gomme, ou 25€ pour le ressemelage du cuir.  \nPour en savoir plus et découvrir chez qui vous rendre pour en bénéficier, rdv sur [ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne)",
+      source: "Chaussure"
     },
     {
       id: 62,
@@ -297,7 +345,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) 35€",
       ],
       correctAnswer: 3,
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne)",
       explanation: "La solution la plus économe en ressources pour allonger la durée de vie d'une imprimante c'est la réparation, avec une Bonus Réparationnt de 35€ à partir de 150€ de dépense. \nPour en savoir plus et découvrir chez qui vous rendre pour en bénéficier, rdv sur [ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne)",
+      source: "EEE"
     },
     {
       id: 65,
@@ -308,8 +358,10 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "C) Je peux me rendre dans un Repair Café",
         "D) Je peux appeler un professionnel et bénéficier du Bonus Réparation",
       ],
-      correctAnswer: [0, 1, 2, 3],
+      correctAnswer: 0,
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesobjets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne)",
       explanation: "Toutes les options possibles en fonction de votre niveau de \"bricolage\" et votre temps. Le plus important c'est de prendre le réflexe ! Si vous optez pour l'option \"faire réparer par un professionnel\", rdv sur [ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne)",
+      source: "Réparation"
     },
     {
       id: 53,
@@ -320,8 +372,10 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "C) Les plaques de cuisson",
         "D) Le réfrigérateur",
       ],
-      correctAnswer: [0, 1, 2, 3],
+      correctAnswer: 0,
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne)",
       explanation: "Tous ces objets permettent de bénéficier du bonus ! Son fonctionnement est très simple : trouver un réparateur labellisé près de chez vous que le site dédié, [ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne) faites réparer votre objet auprès du professionnel, et le bonus réparation sera directement déduit de votre facture.",
+      source: "Réparation"
     },
     {
       id: 63,
@@ -333,7 +387,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) Réparer votre blouson en cuir",
       ],
       correctAnswer: 1,
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne)",
       explanation: "Différence entre réparation, entretien, adaptation. Le Bonus réparation ne s'applique qu'aux opérations de réparation. Certains articles ne sont pas éligibles au bonus réparation, comme les vêtements en cuir et en fourrure naturelle, ou encore les vêtements techniques de sport à usage non quotidien (chaussures de ski par exemple). Pour tout savoir sur le bonus, c'est par là. [ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne)",
+      source: "ADEME"
     },
     {
       id: 64,
@@ -343,25 +399,29 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "B) Non",
       ],
       correctAnswer: 0,
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne)",
       explanation: "Oui bien sûr, les instruments de musique sont concernés, avec un bonus de réparation de 25€. Plus d'infos sur cette page [cette page](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne).",
+      source: "ADEME"
     }
   ],
 
   "ma conso": [
     {
       id: 15,
-      question: "Quelle est la durée moyenne d'utilisation d'un jouet par un enfant ?",
+      question: "Quelle est la durée moyenne d’utilisation d’un jouet par un enfant ?",
       options: [
         "A) 2 mois",
         "B) 8 mois",
         "C) 2 ans",
       ],
       correctAnswer: 1,
+      hint: "Rendez-vous par ici ! [par ici](https://librairie.ademe.fr/economie-circulaire-et-dechets/4084-etude-prealable-a-la-mise-en-place-de-la-filiere-rep-jouets.html)",
       explanation: "La durée d'usage d'un jouet est en moyenne de 8 mois alors qu'il pourrait être utilisé bien plus longtemps (sa durée de vie est plus longue que sa durée d'usage). En France, 100 000 tonnes de jouets sont jetés chaque année ! Il existe aujourd'hui la possibilité d'acheter ou de louer des jouets, les bons gestes ça s'apprend dès le début ! Pour trouver où déposer les jouets qui dorment chez vous c'est par ici ! [par ici](https://quefairedemesdechets.ademe.fr/dechet/jouet-educatif/?utm_campaign=circularoulette_enligne)",
+      source: "Jouet"
     },
     {
       id: 16,
-      question: "Quel est le pourcentage de jouets jetés dans l'année suivant leur achat ?",
+      question: "Quel est le pourcentage de jouets jetés dans l’année suivant leur achat ?",
       options: [
         "A) Très peu",
         "B) Un tiers",
@@ -369,7 +429,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) Les trois-quart",
       ],
       correctAnswer: 2,
+      hint: "Rendez-vous par ici ! [par ici](https://librairie.ademe.fr/economie-circulaire-et-dechets/4084-etude-prealable-a-la-mise-en-place-de-la-filiere-rep-jouets.html)",
       explanation: "Oui, la moitié. \nIl existe aujourd'hui la possibilité d'acheter de seconde main, ou de louer des jouets, les bons gestes ça s'apprend dès le début ! \nPour leur donner une seocnde vie, rendez-vous par ici [par ici](https://quefairedemesdechets.ademe.fr/dechet/jouet-educatif/?utm_campaign=circularoulette_enligne) et attention, il ne faut surtout pas les déposer dans la poubelle jaune.",
+      source: "Jouet"
     },
     {
       id: 19,
@@ -381,7 +443,35 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) Je pense que finalement je n'ai pas vraiment besoin d'avoir ma propre imprimante",
       ],
       correctAnswer: 3,
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/dechet/imprimante/?utm_campaign=circularoulette_enligne)",
       explanation: "Prolonger la durée de vie de ses objets c'est toujours le meilleur choix ! Partager et mutualiser nos équipements aussi, cela permet de réduire la consommation de nouvelles ressources, de faire des économies en utilisant juste ce dont on a besoin !\nVous pouvez trouver où faire réparer votre imprimante sur ce lien [ici](https://quefairedemesdechets.ademe.fr/dechet/imprimante/?utm_campaign=circularoulette_enligne)  et même voir quels réparateurs vous permettent de bénéficier du bonus réparation !",
+      source: "Numérique"
+    }
+  ],
+
+  "on en parle !?": [
+    {
+      id: 999,
+      question: "Cette section est en cours de construction",
+      options: [
+        "Revenez bientôt pour découvrir de nouvelles questions !"
+      ],
+      correctAnswer: 0,
+      explanation: "Les contenus de cette catégorie sont en cours de préparation. Restez connectés !",
+      source: "ADEME"
+    }
+  ],
+
+  "en train !!!": [
+    {
+      id: 998,
+      question: "Cette section est en cours de construction",
+      options: [
+        "Revenez bientôt pour découvrir de nouvelles questions !"
+      ],
+      correctAnswer: 0,
+      explanation: "Les contenus de cette catégorie sont en cours de préparation. Restez connectés !",
+      source: "ADEME"
     }
   ]
 };
