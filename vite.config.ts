@@ -24,6 +24,7 @@ function figmaAssetPlugin(): Plugin {
 }
 
 export default defineConfig({
+  base: '/circularoulette_sncf/',
   plugins: [
     figmaAssetPlugin(),
     react(),
