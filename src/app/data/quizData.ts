@@ -2,7 +2,7 @@ export interface Question {
   id: number;
   question: string;
   options: string[];
-  correctAnswer: number;
+  correctAnswer: number | number[];
   hint?: string;
   explanation: string;
   source: string;
@@ -56,7 +56,7 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "B) Possible, mais que dans le sens de la longueur",
         "C) Non, ça perturbe les chaines de tri",
       ],
-      correctAnswer: 2,
+      correctAnswer: [1, 2],
       hint: "Rendez-vous par ici ! [par ici](https://quefairedemesobjets.ademe.fr/dechet/canette/?utm_campaign=circularoulette_enligne)",
       explanation: "De préférence non, mais si c'est nécessaire, les écraser dans le sens de la longueur. Au risque qu'elles ne soient pas recyclées, il est conseillé de ne pas les écraser ni les aplatir lors du tri (tout comme les bouteilles). Les canettes en acier, en aluminium, et les capsules métalliques sont récupérées séparément dans les centres de tri et regroupées en balles (paquets) en vue de leur recyclage. L'acier et l'aluminium sont ensuite lavés, broyés et fondus pour être réintégrés à la chaîne de production et fabriquer de nouveaux produits. En cas de doute, consultez la consigne sur [Que faire de mes déchets](https://quefairedemesobjets.ademe.fr/dechet/canette/?utm_campaign=circularoulette_enligne) !",
       source: "Emballages"
@@ -111,9 +111,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "C) Je les lave s'ils sont sales",
         "D) Je ne les emboite pas et les laisse tels quels",
       ],
-      correctAnswer: 3,
-      hint: "Rendez-vous par ici ! [par ici](nouvelle page emballages)",
-      explanation: "Il n'y a pas besoin d'emboîter, ni de tasser, ni de laver. En général il faut les déposer tels quels dans le bac, mais dans certaines collectivités il faut les mettre dans un sac (jaune translucide en général).  En cas de doute sur la marche à suivre :",
+      correctAnswer: [1, 3],
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/dechet/boite-en-plastique-alimentaire-emballage/?utm_campaign=circularoulette_enligne)",
+      explanation: "Il n'y a pas besoin d'emboîter, ni de tasser, ni de laver. En général il faut les déposer tels quels dans le bac, mais dans certaines collectivités il faut les mettre dans un sac (jaune translucide en général). En cas de doute sur la marche à suivre, RDV sur [Que faire de mes déchets](https://quefairedemesdechets.ademe.fr/dechet/boite-en-plastique-alimentaire-emballage/?utm_campaign=circularoulette_enligne) !",
       source: "Emaballages"
     }
   ],
@@ -128,7 +128,7 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "C) Commander de nouveaux verres à sa vue et les faire monter sur ses anciennes lunettes",
         "D) Trouver un opticien qui permet d'acheter 4 paires pour le prix d'une",
       ],
-      correctAnswer: 2,
+      correctAnswer: [1, 2],
       hint: "Rendez-vous par ici ! [par ici](https://quefairedemesobjets.ademe.fr/dechet/lunettes/?utm_campaign=circularoulette_enligne)",
       explanation: "L'option la plus écologique est de monter de nouveaux verres sur votre monture actuelle.  \nSi la monture doit vraiment être changée, il est possible de déposer sa paire de lunettes dans une borne de collecte pour lui donner une seconde vie. \nTrouvez celle la plus proche de chez vous en renseignant votre adresse sur la [carte interactive](https://quefairedemesobjets.ademe.fr/dechet/lunettes/?utm_campaign=circularoulette_enligne) !",
       source: "Lunettes"
@@ -158,7 +158,7 @@ export const quizDataByCategory: Record<string, Question[]> = {
       ],
       correctAnswer: 1,
       hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/dechet/peluche/?utm_campaign=circularoulette_enligne)",
-      explanation: "Si elle est en bon état, vous pouvez la donner ou la vendre pour qu'elle poursuive sa vie dans les bras d'autres enfants (entourage, associations, ressourceries, vente sur une plateforme de seconde main, etc.)\nEn mauvais état : vous pouvez la réparer ou la déposer dans un des points de collecte pour recyclage. \nTrouvez les associations locales ou des points de collecte proches de chez vous en renseignant votre adresse sur la [carte interactive](https://quefairedemesdechets.ademe.fr/dechet/peluche/?utm_campaign=circularoulette_enligne) !",
+      explanation: "Si elle est en bon état, vous pouvez la donner ou la vendre pour qu'elle poursuive sa vie dans les bras d'autres enfants (entourage, associations, ressourceries, vente sur une plateforme de seconde main, etc.)\nEn mauvais état : vous pouvez la réparer ou la déposer dans un des points de collecte pour recyclage. \nTrouvez les associations locales ou des points de collecte pour recyclage proches de chez vous en renseignant votre adresse sur la [carte interactive](https://quefairedemesdechets.ademe.fr/dechet/peluche/?utm_campaign=circularoulette_enligne) !",
       source: "Jouet"
     },
     {
@@ -170,8 +170,8 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "C) Je le jette et j'en rachète un nouveau plus à la mode",
         "D) Je le dépose dans un point de collecte de vêtements et j'en recherche un d'occasion",
       ],
-      correctAnswer: 0,
-      hint: "Rendez-vous par ici !  ((lien vers [ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne) )",
+      correctAnswer: [0, 1],
+      hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne)",
       explanation: "Recoudre ou faire recoudre permettrait de prolonger la vie du manteau et d'éviter un déchet textile supplémentaire, surtout s'il est encore en bon état. Le bonus réparation pour réparer une doublure est compris entre 10€ et 25€ ! Découvrez les réparateurs agréés qui peuvent vous faire bénéficier du bonus sur la [carte interactive](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne), ou bien trouvez la retoucherie la plus proche de chez vous [ici](https://quefairedemesdechets.ademe.fr/dechet/vetements/?utm_campaign=circularoulette_enligne)",
       source: "Vetement"
     },
@@ -200,7 +200,7 @@ export const quizDataByCategory: Record<string, Question[]> = {
       ],
       correctAnswer: 2,
       hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/categories/meubles/?utm_campaign=circularoulette_enligne)",
-      explanation: "La donner à son entourage, ses voisins, à une association ou la mettre en vente. Trouvez les associations locales ou des points de collecte proches de chez vous en renseignant votre adresse sur la [carte interactive](https://quefairedemesdechets.ademe.fr/categories/meubles/?utm_campaign=circularoulette_enligne) !",
+      explanation: "La donner à son entourage, ses voisins, à une association ou la mettre en vente. Trouvez les associations locales ou des points de collecte pour recyclage proches de chez vous en renseignant votre adresse sur la [carte interactive](https://quefairedemesdechets.ademe.fr/categories/meubles/?utm_campaign=circularoulette_enligne) !",
       source: "PGC"
     },
     {
@@ -249,7 +249,7 @@ export const quizDataByCategory: Record<string, Question[]> = {
       source: "Réparation"
     },
     {
-      id: 0,
+      id: 100,
       question: "Combien y a-t-il de boîtes à livres en France ?",
       options: [
         "A) 100 000",
@@ -263,7 +263,7 @@ export const quizDataByCategory: Record<string, Question[]> = {
       source: "ADEME"
     },
     {
-      id: 0,
+      id: 101,
       question: "Combien de litres d'eau peut polluer un mégot jeté au sol ?",
       options: [
         "A) 10 litres",
@@ -274,6 +274,20 @@ export const quizDataByCategory: Record<string, Question[]> = {
       correctAnswer: 3,
       hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/dechet/megot-de-cigarette/?utm_campaign=circularoulette_enligne)",
       explanation: "Un mégot peut polluer jusqu'à 500 litres d'eau, et mettre jusqu'à 10 ans à se décomposer. Pour le jeter, pas besoin d'attendre une poubelle dédiée, il suffit de l'éteindre et de le mettre à la poubelle grise des ordures ménagères. Plus d'infos [par ici](https://monmegotouilfaut.fr/)",
+      source: "ADEME"
+    },
+    {
+      id: 102,
+      question: "Quelle proportion de Français avouent avoir déjà jeté un déchet dans la rue (laissé sur le trottoir, pas dans une poubelle) ?",
+      options: [
+        "A) 5%",
+        "B) 16%",
+        "C) 35%",
+        "D) 52%",
+      ],
+      correctAnswer: 2,
+      hint: "Rendez-vous par ici ! [par ici](https://www.gestespropres.com/article/56-les-francais-et-les-dechets-abandonnes)",
+      explanation: "Un objet que vous déposez sur un banc, même si vous espérez qu'il soit récupéré, est considéré comme un déchet sauvage et passible de 135 euros d'amende ! Pour trouver le bon endroit pour vous en défaire, un réflexe simple : le site [Que faire de mes objets & déchets](https://quefairedemesdechets.ademe.fr/?utm_campaign=circularoulette_enligne).",
       source: "ADEME"
     }
   ],
@@ -289,7 +303,7 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) Upcycling",
       ],
       correctAnswer: 1,
-      hint: "Rendez-vous par ici ! ( lien vers https://observatoire-reemploi-reutilisation.ademe.fr/comprendre-le-reemploi )",
+      hint: "Rendez-vous par ici ! [par ici](https://observatoire-reemploi-reutilisation.ademe.fr/comprendre-le-reemploi)",
       explanation: "Recyclage : récupération des matières qui composent l'objet (cela nécessite de l'énergie et de l'eau)\nRéemploi : c'est quand l'objet garde son usage et change de propriétaire\nRéparation : c'est quand l'objet est conservé par son propriétaire et réparé pour le rendre à nouveau fonctionnel \nUpcycling : une forme de recyclage ou de réutilisation qui ajoute de la valeur à l'objet et parfois le change d'usage (ex : salon de jardin en palettes) \nSi vous ne faites pas la même taille de vêtements que vos amis, vous pouvez retrouver les boutiques de seconde main autour de chez vous [ici](https://quefairedemesobjets.ademe.fr/seconde-main/?utm_campaign=circularoulette_enligne)",
       source: "Textile"
     },
@@ -317,7 +331,7 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) C'est une aide qui n'est jamais entrée en vigueur",
       ],
       correctAnswer: 2,
-      hint: "Rendez-vous par ici !  lien vers https://www.bonusreparation.org/",
+      hint: "Rendez-vous par ici !  [par ici](https://www.bonusreparation.org/)",
       explanation: "Depuis 2023, TOUT le monde peut bénéficier du Bonus Réparation ! Il s'agit d'un montant déduit directement de votre facture (votre produit doit avoir été réparé chez un réparateur labellisé). Pour en savoir plus et découvrir chez qui vous rendre, rdv [ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne)",
       source: "Réparation"
     },
@@ -358,7 +372,7 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "C) Je peux me rendre dans un Repair Café",
         "D) Je peux appeler un professionnel et bénéficier du Bonus Réparation",
       ],
-      correctAnswer: 0,
+      correctAnswer: [0, 1, 2, 3],
       hint: "Rendez-vous par ici ! [par ici](https://quefairedemesobjets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne)",
       explanation: "Toutes les options possibles en fonction de votre niveau de \"bricolage\" et votre temps. Le plus important c'est de prendre le réflexe ! Si vous optez pour l'option \"faire réparer par un professionnel\", rdv [ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne)",
       source: "Réparation"
@@ -372,7 +386,7 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "C) Les plaques de cuisson",
         "D) Le réfrigérateur",
       ],
-      correctAnswer: 0,
+      correctAnswer: [0, 1, 2, 3],
       hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne)",
       explanation: "Tous ces objets permettent de bénéficier du bonus ! Son fonctionnement est très simple : trouver un réparateur labellisé près de chez vous sur le [site dédié](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne), faites réparer votre objet auprès du professionnel, et le bonus réparation sera directement déduit de votre facture.",
       source: "Réparation"
@@ -388,7 +402,7 @@ export const quizDataByCategory: Record<string, Question[]> = {
       ],
       correctAnswer: 1,
       hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne)",
-      explanation: "Différence entre réparation, entretien, adaptation. Le Bonus réparation ne s'applique qu'aux opérations de réparation. Certains articles ne sont pas éligibles au bonus réparation, comme les vêtements en cuir et en fourrure naturelle, ou encore les vêtements techniques de sport à usage non quotidien (chaussures de ski par exemple). Pour tout savoir sur le bonus, c'est [par ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne).",
+      explanation: "C'est la différence entre réparation, entretien, et adaptation. Le Bonus réparation ne s'applique qu'aux opérations de réparation. Certains articles ne sont pas éligibles au bonus réparation, comme les vêtements en cuir et en fourrure naturelle, ou encore les vêtements techniques de sport à usage non quotidien (chaussures de ski par exemple). Pour tout savoir sur le bonus, c'est [par ici](https://quefairedemesdechets.ademe.fr/bonus-reparation/?utm_campaign=circularoulette_enligne).",
       source: "ADEME"
     },
     {
@@ -450,14 +464,102 @@ export const quizDataByCategory: Record<string, Question[]> = {
 
   "en train !!!": [
     {
-      id: 998,
-      question: "Cette section est en cours de construction",
+      id: 1,
+      question: "À votre avis, que fait TGV des pièces encore en bon état quand une rame TGV est retirée du service ?",
       options: [
-        "Revenez bientôt pour découvrir de nouvelles questions !"
+        "A) Elles sont jetées",
+        "B) Elles sont récupérées pour réparer d'autres trains",
+        "C) Elles sont vendues",
+        "D) Elles sont fondues en décorations",
+      ],
+      correctAnswer: 1,
+      explanation: "Le programme O2D (« Opération D'obsolescence Déprogrammée ») prolonge la vie de 104 rames TGV INOUI.\nPour cela, TGV-IC réutilise un maximum de pièces encore en bon état plutôt que de les jeter.\nCes pièces servent à réparer ou moderniser d'autres trains, ce qui évite de produire du neuf et limite les déchets.\nAu total, plus de 10 000 pièces réemployées et recyclées au service de la performance industrielle et environnementale.",
+      source: "SNCF"
+    },
+    {
+      id: 2,
+      question: "Selon vous, le programme O2D allonge la durée de vie d'un TGV de... ?",
+      options: [
+        "A) 1 an",
+        "B) 2 ans",
+        "C) 5 ans",
+        "D) 15 ans",
+      ],
+      correctAnswer: 3,
+      explanation: "L'économie circulaire cherche d'abord à prolonger la durée d'usage des objets plutôt que d'en fabriquer de nouveaux.\nLe programme O2D permet de garder les TGV INOUI en service jusqu'à 40–50 ans, avec rénovation et réemploi de pièces.\nCela évite de construire trop de trains neufs et permet d'économiser des ressources et du CO2 (6,7 millions de tonnes de CO2 évitées sur le projet).",
+      source: "SNCF"
+    },
+    {
+      id: 3,
+      question: "Quand les tenues des agents TGV arrivent en fin de vie, que se passe-t-il ?",
+      options: [
+        "A) Elles finissent toutes à la poubelle",
+        "B) Elles sont collectées et transformées en nouveaux objets ou en nouvelles matières",
+        "C) Elles sont stockées à vie dans un entrepôt",
+      ],
+      correctAnswer: 1,
+      explanation: "Les tenues des agents, conçues avec Armor Lux, sont collectées en fin de vie.\nElles sont triées dans une filière dédiée (FRIVEP) et dans l'usine Nouvelles Fibres Textiles à Amplepuis.\nLes textiles sont ensuite recyclés en nouvelles fibres ou upcyclés en objets (sacs, trousses, etc.), plutôt que d'être jetés.",
+      source: "SNCF"
+    },
+    {
+      id: 4,
+      question: "Selon vous, les tenues des agents TGV conçues avec Armor Lux sont éco-conçues à hauteur de :",
+      options: [
+        "A) 25 %",
+        "B) 50 %",
+        "C) 75 %",
+      ],
+      correctAnswer: 2,
+      explanation: "Le partenariat avec Armor Lux vise une circularité du vestiaire des agents.\n75 % du vestiaire est conçu pour être recyclable.\nLes 25 % restants sont valorisables (par exemple en énergie ou en autres usages), donc rien ne part directement à la poubelle.",
+      source: "SNCF"
+    },
+    {
+      id: 5,
+      question: "À bord d'un TGV, est-il possible d'apporter son propre contenant lorsqu'on souhaite acheter une boisson chaude ?",
+      options: [
+        "A) Vrai",
+        "B) Faux",
       ],
       correctAnswer: 0,
-      explanation: "Les contenus de cette catégorie sont en cours de préparation. Restez connectés !",
-      source: "ADEME"
+      explanation: "En effet, dans le TGV on peut se faire servir sa boisson chaude achetée au bistro dans son propre contenant afin d'éviter l'utilisation de gobelet jetable, et en prime une petite réduction s'applique.\nPensez aussi à prendre votre gourde au lieu d'acheter plusieurs bouteilles en plastique.",
+      source: "SNCF"
+    },
+    {
+      id: 6,
+      question: "À bord du TGV, dans quelle poubelle jette-t-on les contenants en verre ?",
+      options: [
+        "A) On ne peut pas les jeter, on doit les emporter avec nous en dehors du train",
+        "B) Dans la poubelle jaune",
+        "C) On peut les déposer au barista",
+      ],
+      correctAnswer: 2,
+      explanation: "Dans le TGV, on peut déposer ses contenants en verre directement en voiture bar auprès du barista qui possède une solution de tri afin de voyager plus responsable.",
+      source: "SNCF"
+    },
+    {
+      id: 7,
+      question: "Selon vous, quel est le taux de recyclabilité du nouveau TGV INOUI qui arrivera courant 2026 sur le réseau ferroviaire ?",
+      options: [
+        "A) 23 %",
+        "B) 56 %",
+        "C) 78 %",
+        "D) 97 %",
+      ],
+      correctAnswer: 3,
+      explanation: "La nouvelle génération de TGV INOUI est recyclable à 97 %. Les TGV actuels le sont à 92 %, ce qui contribue à en faire le train à grande vitesse avec le bilan carbone le plus faible du marché.",
+      source: "SNCF"
+    },
+    {
+      id: 8,
+      question: "Selon vous, quel est le taux de matériaux recyclés utilisés pour la fabrication du nouveau TGV INOUI ?",
+      options: [
+        "A) 1 %",
+        "B) 10 %",
+        "C) 25 %",
+      ],
+      correctAnswer: 2,
+      explanation: "Le nouveau TGV INOUI a été fabriqué avec 25 % de matériaux issus du recyclage (soit 100 tonnes).",
+      source: "SNCF"
     }
   ]
 };
