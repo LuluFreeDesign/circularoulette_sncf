@@ -30,7 +30,6 @@ pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Lock files (using pnpm)
-package-lock.json
+# Lock files
 yarn.lock
 pnpm-lock.yaml
