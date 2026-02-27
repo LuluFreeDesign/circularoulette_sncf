@@ -1,13 +1,14 @@
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import FondCircularouletteSncf from "@/imports/FondCircularouletteSncf-2002-76";
-import bonPlanImg from "figma:asset/3789464d4e58a56616f29101773b8a321cf7b1d2.png";
-import caVaOuImg from "figma:asset/e5e9e41220f73a2ff3027def9628ee25dbc755df.png";
-import challengeImg from "figma:asset/572a39f694ec07f5bb09b481056e53c701ee43b8.png";
-import etCaRepartImg from "figma:asset/20385a17ab11ebd734ad9e9847b76f042c9d864b.png";
-import jagisImg from "figma:asset/a812d0bf875668e3b89368de8ec598bf27ebc878.png";
-import maConsoImg from "figma:asset/d48b9c1c5fe1723545c6a87d66530e85f9e45d48.png";
-import mystereImg from "figma:asset/e8bb9f0d3e9f0a7b222bd8b00af88e30842e82bb.png";
+import maConsoImg from "@/assets/categories/ma-conso.png";
+import bonPlanImg from "@/assets/categories/bon-plan.png";
+import etCaRepartImg from "@/assets/categories/et-ca-repart.png";
+import jagisImg from "@/assets/categories/jagis.png";
+import mystereImg from "@/assets/categories/mystere.png";
+import caVaOuImg from "@/assets/categories/ca-va-ou.png";
+import challengeImg from "@/assets/categories/challenge.png";
+import enTrainImg from "@/assets/categories/en-train.png";
 
 interface WheelProps {
   onCategorySelected: (category: string) => void;
@@ -26,8 +27,8 @@ const categories = [
   "et ça repart !"
 ];
 
-// Images pour chaque catégorie
-const categoryImages: Record<string, string | React.ComponentType | null> = {
+/** Images pour chaque catégorie */
+const categoryImages: Record<string, string> = {
   "ma conso": maConsoImg,
   "bon plan": bonPlanImg,
   "et ça repart !": etCaRepartImg,
@@ -35,6 +36,7 @@ const categoryImages: Record<string, string | React.ComponentType | null> = {
   "mystère !!": mystereImg,
   "ça va où ?": caVaOuImg,
   "challenge !!!": challengeImg,
+  "en train !!!": enTrainImg,
 };
 
 export function Wheel({ onCategorySelected, isSpinning, setIsSpinning }: WheelProps) {
@@ -105,19 +107,15 @@ export function Wheel({ onCategorySelected, isSpinning, setIsSpinning }: WheelPr
           {/* Images des catégories */}
           <div className="absolute inset-0">
             {categories.map((category, index) => {
-              const angle = (index * 45) + 22.5; // Centré dans la part colorée (+ 22.5° pour décaler au milieu de la section)
-              const radius = isMobile ? 120 : 180; // Distance du centre adaptée selon la taille d'écran
+              const angle = (index * 45) + 22.5;
+              const radius = isMobile ? 100 : 155;
               const radians = (angle * Math.PI) / 180;
               const x = radius * Math.sin(radians);
               const y = -radius * Math.cos(radians);
-              
-              const categoryImage = categoryImages[category];
-              
-              if (!categoryImage) return null;
-              
-              // Vérifier si c'est un composant React ou une URL d'image
-              const isComponent = typeof categoryImage === 'function';
-              
+
+              const image = categoryImages[category];
+              if (!image) return null;
+
               return (
                 <div
                   key={`img-${index}`}
@@ -128,20 +126,11 @@ export function Wheel({ onCategorySelected, isSpinning, setIsSpinning }: WheelPr
                     transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) rotate(${angle}deg)`,
                   }}
                 >
-                  {isComponent ? (
-                    <div className={isMobile ? "w-24 h-12" : "w-32 h-16"}>
-                      {(() => {
-                        const CategoryComponent = categoryImage as React.ComponentType;
-                        return <CategoryComponent />;
-                      })()}
-                    </div>
-                  ) : (
-                    <img 
-                      src={categoryImage as string} 
-                      alt={category}
-                      className="w-16 h-auto md:w-20"
-                    />
-                  )}
+                  <img
+                    src={image}
+                    alt={category}
+                    className="h-8 md:h-10 w-auto"
+                  />
                 </div>
               );
             })}

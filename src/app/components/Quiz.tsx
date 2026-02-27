@@ -58,6 +58,12 @@ function isAnswerCorrect(index: number, correctAnswer: number | number[]): boole
 /** Mémorise la dernière question posée par catégorie pour éviter les doublons consécutifs */
 const lastQuestionByCategory: Record<string, number> = {};
 
+/** Index séquentiel pour les catégories qui affichent les questions dans l'ordre */
+const sequentialIndexByCategory: Record<string, number> = {};
+
+/** Catégories dont les questions doivent apparaître dans l'ordre du fichier */
+const SEQUENTIAL_CATEGORIES = ["en train !!!"];
+
 interface QuizProps {
   category: string;
   isMystery?: boolean;
@@ -71,8 +77,17 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
   const currentQuestion = useMemo(() => {
     const questions = quizDataByCategory[category] || [];
     if (questions.length === 0) return null;
+
+    // Catégories séquentielles : on parcourt les questions dans l'ordre du fichier
+    if (SEQUENTIAL_CATEGORIES.includes(category)) {
+      const idx = sequentialIndexByCategory[category] ?? 0;
+      const selected = questions[idx % questions.length];
+      sequentialIndexByCategory[category] = (idx + 1) % questions.length;
+      return selected;
+    }
+
+    // Autres catégories : sélection aléatoire (en évitant la dernière question)
     const lastId = lastQuestionByCategory[category];
-    // Exclure la dernière question posée dans cette catégorie (sauf s'il n'y en a qu'une)
     const pool = questions.length > 1
       ? questions.filter(q => q.id !== lastId)
       : questions;
@@ -151,7 +166,7 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
         const hintUrl = markdownMatch ? markdownMatch[2] : bareUrlMatch ? bareUrlMatch[1] : null;
 
         return (
-          <div className="mb-5 p-4 bg-[#a1d6ca] border-l-4 border-[#00b388] rounded-lg">
+          <div className="mb-5 p-4 bg-[#e0f2ed] border-l-4 border-[#00b388] rounded-lg">
             <p className="text-[#00205b] flex items-start gap-2">
               <span className="text-lg shrink-0" aria-hidden="true">💡</span>
               <span>
