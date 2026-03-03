@@ -86,7 +86,7 @@ export function Wheel({ onCategorySelected, isSpinning, setIsSpinning }: WheelPr
     <div className="relative flex flex-col items-center gap-6">
       {/* Flèche indicatrice au-dessus de la roue */}
       <div 
-        className="w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-t-[30px] border-t-[#0084d4]"
+        className="w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-t-[30px] border-t-[#00584E]"
         aria-hidden="true"
       />
       
