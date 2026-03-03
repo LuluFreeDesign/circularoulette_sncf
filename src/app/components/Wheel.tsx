@@ -141,15 +141,15 @@ export function Wheel({ onCategorySelected, isSpinning, setIsSpinning }: WheelPr
         <button
           onClick={spinWheel}
           disabled={isSpinning}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-full w-20 h-20 shadow-lg flex items-center justify-center transition-all hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-4 focus:ring-[#0084d4] focus:ring-opacity-50"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-full w-20 h-20 shadow-lg flex items-center justify-center transition-all hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-4 focus:ring-[#009987] focus:ring-opacity-50"
           aria-label={isSpinning ? "La roue tourne" : "Tourner la roue"}
         >
-          <span className="text-2xl text-[#0084d4]" aria-hidden="true">↻</span>
+          <span className="text-2xl text-[#009987]" aria-hidden="true">↻</span>
         </button>
       </div>
       
       {/* Instructions */}
-      <p className="text-center text-base md:text-lg text-[#00205b]" aria-live="polite">
+      <p className="text-center text-base md:text-lg text-[#00584E]" aria-live="polite">
         {isSpinning ? "La roue tourne..." : "Cliquez au centre pour tourner la roue !"}
       </p>
     </div>
