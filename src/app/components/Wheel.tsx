@@ -19,7 +19,7 @@ interface WheelProps {
 const categories = [
   "ma conso",
   "bon plan",
-  "et ça repart !",
+  "en train !!!",
   "j'agis !!",
   "mystère !!",
   "ça va où ?",
