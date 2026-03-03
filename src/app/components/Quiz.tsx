@@ -287,6 +287,11 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
             <p className="text-[#00584E] leading-relaxed">
               {renderExplanation(currentQuestion.explanation)}
             </p>
+            {currentQuestion.source === "SNCF" && (
+              <p className="text-[#00584E] text-sm italic mt-2">
+                Source : SNCF voyageurs
+              </p>
+            )}
           </div>
 
           {/* Jeu concours - Affiché uniquement pour les bonnes réponses */}
@@ -301,10 +306,10 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
                 <span className="text-3xl" aria-hidden="true">🎁</span>
                 <div className="flex-1">
                   <h4 className="font-bold text-lg text-[#009987] mb-2">
-                    Bravo ! Tentez de gagner un Aller/retour en train !
+                    Bravo ! Tentez de gagner un Aller / Retour en TGV INOUI !
                   </h4>
                   <p className="text-[#00584E] mb-4 leading-relaxed">
-                    Une bonne réponse = une chance de gagner un voyage avec la SNCF.
+                    Une bonne réponse = une chance de gagner un Aller / Retour en TGV INOUI.
                     <br />
                     Pour participer au tirage au sort, il suffit de nous laisser votre email 💌.
                   </p>
