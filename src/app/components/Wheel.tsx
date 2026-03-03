@@ -26,6 +26,10 @@ const categories = [
   "en train !!!"
 ];
 
+/** Garantir "en train !!!" dans les 3 premiers tours */
+let spinCount = 0;
+let enTrainAppeared = false;
+
 /** Images pour chaque catégorie */
 const categoryImages: Record<string, string> = {
   "ma conso": maConsoImg,
@@ -55,26 +59,42 @@ export function Wheel({ onCategorySelected, isSpinning, setIsSpinning }: WheelPr
 
   const spinWheel = () => {
     if (isSpinning) return;
-    
+
     setIsSpinning(true);
-    
+    spinCount++;
+
     // Calcul de la rotation aléatoire : plusieurs tours + angle final
     const minSpins = 5;
     const maxSpins = 8;
     const spins = Math.floor(Math.random() * (maxSpins - minSpins + 1)) + minSpins;
-    const extraDegrees = Math.floor(Math.random() * 360);
+
+    let extraDegrees: number;
+
+    // Au 3e tour, forcer "en train !!!" si pas encore apparu
+    if (spinCount >= 3 && !enTrainAppeared) {
+      // Plages de normalizedRotation qui donnent "en train !!!" (indices 2 et 7)
+      const ranges = [[1, 45], [226, 270]];
+      const range = ranges[Math.floor(Math.random() * ranges.length)];
+      const targetNorm = range[0] + Math.floor(Math.random() * (range[1] - range[0] + 1));
+      extraDegrees = (targetNorm - (rotation % 360) + 360) % 360;
+    } else {
+      extraDegrees = Math.floor(Math.random() * 360);
+    }
+
     const totalRotation = rotation + (spins * 360) + extraDegrees;
-    
+
     setRotation(totalRotation);
-    
+
     // Calculer la catégorie sélectionnée après l'animation
     setTimeout(() => {
       const normalizedRotation = totalRotation % 360;
       const sectionAngle = 360 / 8; // 45 degrés par section
-      // La flèche au départ est entre challenge et ma conso
-      // Calcul direct sans ajustement supplémentaire
       const categoryIndex = Math.floor((360 - normalizedRotation) / sectionAngle) % 8;
-      
+
+      if (categories[categoryIndex] === "en train !!!") {
+        enTrainAppeared = true;
+      }
+
       onCategorySelected(categories[categoryIndex]);
       setIsSpinning(false);
     }, 2000);

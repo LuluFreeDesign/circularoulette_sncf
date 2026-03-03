@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { Check, X } from "lucide-react";
 import { motion } from "motion/react";
 import { quizDataByCategory, Question } from "../data/quizData";
@@ -74,28 +74,37 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
   const [showResult, setShowResult] = useState(false);
   
-  const currentQuestion = useMemo(() => {
+  // Sélection pure (sans effet de bord) pour être compatible StrictMode
+  const [currentQuestion] = useState<Question | null>(() => {
     const questions = quizDataByCategory[category] || [];
     if (questions.length === 0) return null;
 
-    // Catégories séquentielles : on parcourt les questions dans l'ordre du fichier
     if (SEQUENTIAL_CATEGORIES.includes(category)) {
       const idx = sequentialIndexByCategory[category] ?? 0;
-      const selected = questions[idx % questions.length];
-      sequentialIndexByCategory[category] = (idx + 1) % questions.length;
-      return selected;
+      return questions[idx % questions.length];
     }
 
-    // Autres catégories : sélection aléatoire (en évitant la dernière question)
     const lastId = lastQuestionByCategory[category];
     const pool = questions.length > 1
       ? questions.filter(q => q.id !== lastId)
       : questions;
     const randomIndex = Math.floor(Math.random() * pool.length);
-    const selected = pool[randomIndex];
-    lastQuestionByCategory[category] = selected.id;
-    return selected;
-  }, [category]);
+    return pool[randomIndex];
+  });
+
+  // Tracking en useEffect (exécuté une seule fois, même en StrictMode)
+  useEffect(() => {
+    if (!currentQuestion) return;
+    if (SEQUENTIAL_CATEGORIES.includes(category)) {
+      const questions = quizDataByCategory[category] || [];
+      const currentIdx = questions.findIndex(q => q.id === currentQuestion.id);
+      if (currentIdx !== -1) {
+        sequentialIndexByCategory[category] = (currentIdx + 1) % questions.length;
+      }
+    } else {
+      lastQuestionByCategory[category] = currentQuestion.id;
+    }
+  }, [category, currentQuestion]);
   
   if (!currentQuestion) {
     return <div>Aucune question disponible pour cette catégorie.</div>;
