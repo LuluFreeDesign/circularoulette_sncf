@@ -49,12 +49,6 @@ export default function App() {
   }, [currentCategory]);
 
   const handleCategorySelected = (category: string) => {
-    // Cas spécial : "et ça repart !" relance automatiquement la roue
-    if (category === "et ça repart !") {
-      // Pas besoin de changer de vue, juste garder la roue visible
-      return;
-    }
-
     // Cas spécial : "mystère !!" sélectionne une catégorie au hasard
     if (category === "mystère !!") {
       const randomIndex = Math.floor(Math.random() * quizCategories.length);

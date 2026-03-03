@@ -114,7 +114,7 @@ export const quizDataByCategory: Record<string, Question[]> = {
       correctAnswer: [1, 3],
       hint: "Rendez-vous par ici ! [par ici](https://quefairedemesdechets.ademe.fr/dechet/boite-en-plastique-alimentaire-emballage/?utm_campaign=circularoulette_enligne)",
       explanation: "Il n'y a pas besoin d'emboîter, ni de tasser, ni de laver. En général il faut les déposer tels quels dans le bac, mais dans certaines collectivités il faut les mettre dans un sac (jaune translucide en général). En cas de doute sur la marche à suivre, RDV sur [Que faire de mes déchets](https://quefairedemesdechets.ademe.fr/dechet/boite-en-plastique-alimentaire-emballage/?utm_campaign=circularoulette_enligne) !",
-      source: "Emaballages"
+      source: "Emballages"
     }
   ],
 
@@ -449,22 +449,9 @@ export const quizDataByCategory: Record<string, Question[]> = {
     }
   ],
 
-  "on en parle !?": [
-    {
-      id: 999,
-      question: "Cette section est en cours de construction",
-      options: [
-        "Revenez bientôt pour découvrir de nouvelles questions !"
-      ],
-      correctAnswer: 0,
-      explanation: "Les contenus de cette catégorie sont en cours de préparation. Restez connectés !",
-      source: "ADEME"
-    }
-  ],
-
   "en train !!!": [
     {
-      id: 1,
+      id: 200,
       question: "À votre avis, que fait TGV des pièces encore en bon état quand une rame TGV est retirée du service ?",
       options: [
         "A) Elles sont jetées",
@@ -473,11 +460,11 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) Elles sont fondues en décorations",
       ],
       correctAnswer: 1,
-      explanation: "Le programme O2D (« Opération D'obsolescence Déprogrammée ») prolonge la vie de 104 rames TGV INOUI.\nPour cela, TGV-IC réutilise un maximum de pièces encore en bon état plutôt que de les jeter.\nCes pièces servent à réparer ou moderniser d'autres trains, ce qui évite de produire du neuf et limite les déchets.\nAu total, plus de 10 000 pièces réemployées et recyclées au service de la performance industrielle et environnementale.",
+      explanation: "Le programme Opération D'obsolescence Déprogrammée prolonge la vie de 104 rames TGV INOUI.\nPour cela, TGV-IC réutilise un maximum de pièces encore en bon état plutôt que de les jeter.\nCes pièces servent à réparer ou moderniser d'autres trains, ce qui évite de produire du neuf et limite les déchets.\nAu total +10 000 pièces réemployées et recyclées au service de la performance industrielle et environnementale",
       source: "SNCF"
     },
     {
-      id: 2,
+      id: 201,
       question: "Selon vous, le programme O2D allonge la durée de vie d'un TGV de... ?",
       options: [
         "A) 1 an",
@@ -490,7 +477,7 @@ export const quizDataByCategory: Record<string, Question[]> = {
       source: "SNCF"
     },
     {
-      id: 3,
+      id: 202,
       question: "Quand les tenues des agents TGV arrivent en fin de vie, que se passe-t-il ?",
       options: [
         "A) Elles finissent toutes à la poubelle",
@@ -502,7 +489,7 @@ export const quizDataByCategory: Record<string, Question[]> = {
       source: "SNCF"
     },
     {
-      id: 4,
+      id: 203,
       question: "Selon vous, les tenues des agents TGV conçues avec Armor Lux sont éco-conçues à hauteur de :",
       options: [
         "A) 25 %",
@@ -514,7 +501,7 @@ export const quizDataByCategory: Record<string, Question[]> = {
       source: "SNCF"
     },
     {
-      id: 5,
+      id: 204,
       question: "À bord d'un TGV, est-il possible d'apporter son propre contenant lorsqu'on souhaite acheter une boisson chaude ?",
       options: [
         "A) Vrai",
@@ -525,7 +512,7 @@ export const quizDataByCategory: Record<string, Question[]> = {
       source: "SNCF"
     },
     {
-      id: 6,
+      id: 205,
       question: "À bord du TGV, dans quelle poubelle jette-t-on les contenants en verre ?",
       options: [
         "A) On ne peut pas les jeter, on doit les emporter avec nous en dehors du train",
@@ -537,7 +524,7 @@ export const quizDataByCategory: Record<string, Question[]> = {
       source: "SNCF"
     },
     {
-      id: 7,
+      id: 206,
       question: "Selon vous, quel est le taux de recyclabilité du nouveau TGV INOUI qui arrivera courant 2026 sur le réseau ferroviaire ?",
       options: [
         "A) 23 %",
@@ -550,7 +537,7 @@ export const quizDataByCategory: Record<string, Question[]> = {
       source: "SNCF"
     },
     {
-      id: 8,
+      id: 207,
       question: "Selon vous, quel est le taux de matériaux recyclés utilisés pour la fabrication du nouveau TGV INOUI ?",
       options: [
         "A) 1 %",

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import FondCircularouletteSncf from "@/imports/FondCircularouletteSncf-2002-76";
 import maConsoImg from "@/assets/categories/ma-conso.png";
 import bonPlanImg from "@/assets/categories/bon-plan.png";
-import etCaRepartImg from "@/assets/categories/et-ca-repart.png";
 import jagisImg from "@/assets/categories/jagis.png";
 import mystereImg from "@/assets/categories/mystere.png";
 import caVaOuImg from "@/assets/categories/ca-va-ou.png";
@@ -24,14 +23,13 @@ const categories = [
   "mystère !!",
   "ça va où ?",
   "challenge !!!",
-  "et ça repart !"
+  "en train !!!"
 ];
 
 /** Images pour chaque catégorie */
 const categoryImages: Record<string, string> = {
   "ma conso": maConsoImg,
   "bon plan": bonPlanImg,
-  "et ça repart !": etCaRepartImg,
   "j'agis !!": jagisImg,
   "mystère !!": mystereImg,
   "ça va où ?": caVaOuImg,
