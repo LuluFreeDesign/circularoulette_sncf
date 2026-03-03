@@ -300,7 +300,7 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
                     Pour participer au tirage au sort, il suffit de nous laisser votre email 💌.
                   </p>
                   <a
-                    href="https://tally.so/r/EklWLq"
+                    href="https://quefairedemesdechets.ademe.fr/jeu-concours-entrain-pour-le-climat/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 bg-[#0084d4] text-white px-6 py-3 rounded-lg font-medium transition-all hover:bg-[#003865] hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[#0084d4] focus:ring-opacity-50 shadow-md hover:shadow-lg"
