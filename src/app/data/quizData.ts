@@ -465,7 +465,7 @@ export const quizDataByCategory: Record<string, Question[]> = {
     },
     {
       id: 201,
-      question: "Selon vous, le programme O2D allonge la durée de vie d'un TGV de... ?",
+      question: "Selon vous, le programme Opération D'obsolescence Déprogrammée allonge la durée de vie d'un TGV de... ?",
       options: [
         "A) 1 an",
         "B) 2 ans",
@@ -473,7 +473,7 @@ export const quizDataByCategory: Record<string, Question[]> = {
         "D) 15 ans",
       ],
       correctAnswer: 3,
-      explanation: "L'économie circulaire cherche d'abord à prolonger la durée d'usage des objets plutôt que d'en fabriquer de nouveaux.\nLe programme O2D permet de garder les TGV INOUI en service jusqu'à 40–50 ans, avec rénovation et réemploi de pièces.\nCela évite de construire trop de trains neufs et permet d'économiser des ressources et du CO2 (6,7 millions de tonnes de CO2 évitées sur le projet).",
+      explanation: "L'économie circulaire cherche d'abord à prolonger la durée d'usage des objets plutôt que d'en fabriquer de nouveaux.\nLe programme Opération D'obsolescence Déprogrammée permet de garder les TGV INOUI en service jusqu'à 40–50 ans, avec rénovation et réemploi de pièces.\nCela évite de construire trop de trains neufs et permet d'économiser des ressources et du CO2 (6,7 millions de tonnes de CO2 évitées sur le projet).",
       source: "SNCF"
     },
     {
