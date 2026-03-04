@@ -30,7 +30,7 @@ function renderExplanation(text: string): React.ReactNode[] {
           href={match[2]}
           target="_blank"
           rel="noopener noreferrer"
-          className="underline text-[#009987] hover:text-[#003D36] transition-colors"
+          className="underline text-[#1592A8] hover:text-[#0A4D5A] transition-colors"
         >
           {match[1]}
         </a>
@@ -152,18 +152,18 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
       <div className="mb-6 flex items-center justify-between">
         <div className="flex items-center gap-2 flex-wrap">
           {isMystery && (
-            <span className="inline-block px-4 py-2 bg-[#80CCBF] text-[#00584E] rounded-full">
+            <span className="inline-block px-4 py-2 bg-[#8ECFDA] text-[#3A3A3A] rounded-full">
               Mystère !!
             </span>
           )}
-          <span className={`inline-block px-4 py-2 rounded-full ${isMystery ? "bg-[#00584E] text-white" : "bg-[#009987] text-white"}`}>
+          <span className={`inline-block px-4 py-2 rounded-full ${isMystery ? "bg-[#3A3A3A] text-white" : "bg-[#1592A8] text-white"}`}>
             {category.charAt(0).toUpperCase() + category.slice(1)}
           </span>
         </div>
       </div>
 
       {/* Question */}
-      <h2 className="text-xl md:text-2xl mb-3 text-[#00584E]">
+      <h2 className="text-xl md:text-2xl mb-3 text-[#3A3A3A]">
         {currentQuestion.question}
       </h2>
 
@@ -175,11 +175,11 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
         const hintUrl = markdownMatch ? markdownMatch[2] : bareUrlMatch ? bareUrlMatch[1] : null;
 
         return (
-          <div className="mb-5 p-4 bg-[#E0F5F0] border-l-4 border-[#009987] rounded-lg">
-            <p className="text-[#00584E] flex items-start gap-2">
+          <div className="mb-5 p-4 bg-[#D4EEF2] border-l-4 border-[#1592A8] rounded-lg">
+            <p className="text-[#3A3A3A] flex items-start gap-2">
               <span className="text-lg shrink-0" aria-hidden="true">💡</span>
               <span>
-                <strong className="text-[#00584E]">Indice</strong>
+                <strong className="text-[#3A3A3A]">Indice</strong>
                 <br />
                 <span className="text-sm">
                   Pour en savoir plus,{" "}
@@ -188,7 +188,7 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
                       href={hintUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#009987] underline hover:text-[#003D36] transition-colors"
+                      className="text-[#1592A8] underline hover:text-[#0A4D5A] transition-colors"
                     >
                       rendez-vous par ici !
                     </a>
@@ -204,15 +204,15 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
 
       {/* Indication multi-réponses */}
       {isMultiAnswer && !isDiscussionQuestion && (
-        <p className="mb-5 text-sm text-[#003D36] bg-[#80CCBF]/30 border border-[#009987]/30 rounded-lg px-4 py-2 italic">
+        <p className="mb-5 text-sm text-[#0A4D5A] bg-[#8ECFDA]/30 border border-[#1592A8]/30 rounded-lg px-4 py-2 italic">
           Plusieurs réponses sont possibles. Trouvez-en au moins une !
         </p>
       )}
 
       {/* Options de réponse OU message de réflexion pour questions de discussion */}
       {isDiscussionQuestion ? (
-        <div className="mb-6 p-6 bg-[#B3E0D6] border-2 border-[#009987] rounded-lg">
-          <p className="text-[#00584E] text-center font-medium text-lg">
+        <div className="mb-6 p-6 bg-[#BDE3EB] border-2 border-[#1592A8] rounded-lg">
+          <p className="text-[#3A3A3A] text-center font-medium text-lg">
             C'est une question de réflexion personnelle. Prenez un moment pour y penser...
           </p>
         </div>
@@ -229,21 +229,21 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
                 key={index}
                 onClick={() => handleAnswerClick(index)}
                 disabled={showResult}
-                className={`w-full text-left p-4 rounded-lg border-2 transition-all focus:outline-none focus:ring-4 focus:ring-[#009987] focus:ring-opacity-50 ${
+                className={`w-full text-left p-4 rounded-lg border-2 transition-all focus:outline-none focus:ring-4 focus:ring-[#1592A8] focus:ring-opacity-50 ${
                   showCorrect
-                    ? "border-[#009987] bg-[#E0F5F0]"
+                    ? "border-[#16A34A] bg-[#DCFCE7]"
                     : showIncorrect
                     ? "border-[#f2827f] bg-[#f8c1b8]"
                     : isSelected
-                    ? "border-[#009987] bg-[#80CCBF]"
-                    : "border-gray-300 hover:border-[#009987] hover:bg-gray-50"
+                    ? "border-[#1592A8] bg-[#8ECFDA]"
+                    : "border-gray-300 hover:border-[#1592A8] hover:bg-gray-50"
                 } ${showResult ? "cursor-default" : "cursor-pointer"}`}
                 aria-pressed={isSelected}
                 aria-label={`Option ${index + 1}: ${option}`}
               >
                 <div className="flex items-center justify-between">
                   <span className="text-base md:text-lg">{option}</span>
-                  {showCorrect && <Check className="text-[#006B5E] shrink-0" aria-label="Bonne réponse" />}
+                  {showCorrect && <Check className="text-[#166534] shrink-0" aria-label="Bonne réponse" />}
                   {showIncorrect && <X className="text-[#651c32] shrink-0" aria-label="Mauvaise réponse" />}
                 </div>
               </button>
@@ -261,13 +261,13 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
         >
           <div className={`p-4 rounded-lg ${
             isDiscussionQuestion 
-              ? "bg-[#B3E0D6] border-2 border-[#009987]"
-              : hasAtLeastOneCorrect 
-                ? "bg-[#E0F5F0] border-2 border-[#009987]" 
+              ? "bg-[#BDE3EB] border-2 border-[#1592A8]"
+              : hasAtLeastOneCorrect
+                ? "bg-[#DCFCE7] border-2 border-[#16A34A]"
                 : "bg-[#f8c1b8] border-2 border-[#f2827f]"
           }`}>
             {!isDiscussionQuestion && (
-              <h3 className={`font-bold text-lg mb-2 flex items-center gap-2 ${hasAtLeastOneCorrect ? "text-[#006B5E]" : "text-[#651c32]"}`}>
+              <h3 className={`font-bold text-lg mb-2 flex items-center gap-2 ${hasAtLeastOneCorrect ? "text-[#166534]" : "text-[#651c32]"}`}>
                 {hasAtLeastOneCorrect ? (
                   <>
                     <Check aria-hidden="true" /> Bonne réponse !
@@ -280,15 +280,15 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
               </h3>
             )}
             {isDiscussionQuestion && (
-              <h3 className="font-bold text-lg mb-2 text-[#00584E]">
+              <h3 className="font-bold text-lg mb-2 text-[#3A3A3A]">
                 Piste de réflexion
               </h3>
             )}
-            <p className="text-[#00584E] leading-relaxed">
+            <p className="text-[#3A3A3A] leading-relaxed">
               {renderExplanation(currentQuestion.explanation)}
             </p>
             {currentQuestion.source === "SNCF" && (
-              <p className="text-[#00584E] text-sm italic mt-2">
+              <p className="text-[#3A3A3A] text-sm italic mt-2">
                 Source : SNCF voyageurs
               </p>
             )}
@@ -300,15 +300,15 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="mt-4 p-5 rounded-lg bg-gradient-to-br from-[#a4c8e1]/30 to-[#B3E0D6]/30 border-2 border-[#009987]"
+              className="mt-4 p-5 rounded-lg bg-gradient-to-br from-[#BDE3EB]/30 to-[#BDE3EB]/30 border-2 border-[#1592A8]"
             >
               <div className="flex items-start gap-3">
                 <span className="text-3xl" aria-hidden="true">🎁</span>
                 <div className="flex-1">
-                  <h4 className="font-bold text-lg text-[#009987] mb-2">
+                  <h4 className="font-bold text-lg text-[#1592A8] mb-2">
                     Bravo ! Tentez de gagner un Aller / Retour en TGV INOUI !
                   </h4>
-                  <p className="text-[#00584E] mb-4 leading-relaxed">
+                  <p className="text-[#3A3A3A] mb-4 leading-relaxed">
                     Une bonne réponse = une chance de gagner un Aller / Retour en TGV INOUI.
                     <br />
                     Pour participer au tirage au sort, il suffit de nous laisser votre email 💌.
@@ -317,12 +317,12 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
                     href="https://quefairedemesdechets.ademe.fr/jeu-concours-entrain-pour-le-climat/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-[#009987] text-white px-6 py-3 rounded-lg font-medium transition-all hover:bg-[#003D36] hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[#009987] focus:ring-opacity-50 shadow-md hover:shadow-lg"
+                    className="inline-flex items-center gap-2 bg-[#1592A8] text-white px-6 py-3 rounded-lg font-medium transition-all hover:bg-[#0A4D5A] hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[#1592A8] focus:ring-opacity-50 shadow-md hover:shadow-lg"
                   >
                     <span>Participer au jeu concours</span>
                     <span aria-hidden="true">&rarr;</span>
                   </a>
-                  <p className="text-xs text-[#003D36] mt-3">
+                  <p className="text-xs text-[#0A4D5A] mt-3">
                     Le formulaire s'ouvrira dans un nouvel onglet
                   </p>
                 </div>
@@ -338,14 +338,14 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
           <button
             onClick={handleValidate}
             disabled={selectedAnswers.length === 0}
-            className="flex-1 bg-[#009987] text-white py-3 px-6 rounded-lg transition-all hover:bg-[#003D36] disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-4 focus:ring-[#009987] focus:ring-opacity-50"
+            className="flex-1 bg-[#1592A8] text-white py-3 px-6 rounded-lg transition-all hover:bg-[#0A4D5A] disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-4 focus:ring-[#1592A8] focus:ring-opacity-50"
           >
             Valider ma réponse
           </button>
         ) : (
           <button
             onClick={handleNext}
-            className="flex-1 bg-[#009987] text-white py-3 px-6 rounded-lg transition-all hover:bg-[#003D36] focus:outline-none focus:ring-4 focus:ring-[#009987] focus:ring-opacity-50"
+            className="flex-1 bg-[#1592A8] text-white py-3 px-6 rounded-lg transition-all hover:bg-[#0A4D5A] focus:outline-none focus:ring-4 focus:ring-[#1592A8] focus:ring-opacity-50"
           >
             Rejouer
           </button>

@@ -1,12 +1,12 @@
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
-import FondCircularouletteSncf from "@/imports/FondCircularouletteSncf-2002-76";
-import maConsoImg from "@/assets/categories/ma-conso.png";
-import bonPlanImg from "@/assets/categories/bon-plan.png";
-import jagisImg from "@/assets/categories/jagis.png";
-import mystereImg from "@/assets/categories/mystere.png";
-import caVaOuImg from "@/assets/categories/ca-va-ou.png";
-import challengeImg from "@/assets/categories/challenge.png";
+import fondImg from "@/assets/fond_circularoulette.svg";
+import maConsoImg from "@/assets/categories/ma-conso.jpg";
+import bonPlanImg from "@/assets/categories/bon-plan.jpg";
+import jagisImg from "@/assets/categories/jagis.jpg";
+import mystereImg from "@/assets/categories/mystere.jpg";
+import caVaOuImg from "@/assets/categories/ca-va-ou.jpg";
+import challengeImg from "@/assets/categories/challenge.jpg";
 import enTrainImg from "@/assets/categories/en-train.png";
 
 interface WheelProps {
@@ -104,7 +104,7 @@ export function Wheel({ onCategorySelected, isSpinning, setIsSpinning }: WheelPr
     <div className="relative flex flex-col items-center gap-6">
       {/* Flèche indicatrice au-dessus de la roue */}
       <div 
-        className="w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-t-[30px] border-t-[#00584E]"
+        className="w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-t-[30px] border-t-[#1592A8]"
         aria-hidden="true"
       />
       
@@ -119,14 +119,14 @@ export function Wheel({ onCategorySelected, isSpinning, setIsSpinning }: WheelPr
           className="relative rounded-full overflow-hidden w-full h-full"
         >
           <div className="w-full h-full">
-            <FondCircularouletteSncf />
+            <img src={fondImg} alt="" className="w-full h-full" aria-hidden="true" />
           </div>
           
           {/* Images des catégories */}
           <div className="absolute inset-0">
             {categories.map((category, index) => {
               const angle = (index * 45) + 22.5;
-              const radius = isMobile ? 100 : 155;
+              const radius = isMobile ? 118 : 185;
               const radians = (angle * Math.PI) / 180;
               const x = radius * Math.sin(radians);
               const y = -radius * Math.cos(radians);
@@ -147,7 +147,7 @@ export function Wheel({ onCategorySelected, isSpinning, setIsSpinning }: WheelPr
                   <img
                     src={image}
                     alt={category}
-                    className="h-8 md:h-10 w-auto"
+                    className="w-[68px] md:w-[88px] h-auto object-contain"
                   />
                 </div>
               );
@@ -159,15 +159,15 @@ export function Wheel({ onCategorySelected, isSpinning, setIsSpinning }: WheelPr
         <button
           onClick={spinWheel}
           disabled={isSpinning}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-full w-20 h-20 shadow-lg flex items-center justify-center transition-all hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-4 focus:ring-[#009987] focus:ring-opacity-50"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-full w-20 h-20 shadow-lg flex items-center justify-center transition-all hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-4 focus:ring-[#1592A8] focus:ring-opacity-50"
           aria-label={isSpinning ? "La roue tourne" : "Tourner la roue"}
         >
-          <span className="text-2xl text-[#009987]" aria-hidden="true">↻</span>
+          <span className="text-2xl text-[#1592A8]" aria-hidden="true">↻</span>
         </button>
       </div>
       
       {/* Instructions */}
-      <p className="text-center text-base md:text-lg text-[#00584E]" aria-live="polite">
+      <p className="text-center text-base md:text-lg text-[#1592A8]" aria-live="polite">
         {isSpinning ? "La roue tourne..." : "Cliquez au centre pour tourner la roue !"}
       </p>
     </div>
