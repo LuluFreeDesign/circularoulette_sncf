@@ -325,6 +325,9 @@ export function Quiz({ category, isMystery = false, onComplete }: QuizProps) {
                   <p className="text-xs text-[#0A4D5A] mt-3">
                     Le formulaire s'ouvrira dans un nouvel onglet
                   </p>
+                  <p className="text-sm font-medium text-[#FA9158] mt-4">
+                    ⏰ Dernier jour ! Fin des participations le 31 Mars 2026 à 23h59.
+                  </p>
                 </div>
               </div>
             </motion.div>
